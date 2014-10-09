@@ -1,0 +1,100 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/jniu/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/jniu/.npm/grate-limiter/0.0.3/package.tgz', '.' ]
+11 verbose tarball /Users/jniu/.npm/grate-limiter/0.0.3/package.tgz
+12 verbose folder .
+13 info prepublish grate-limiter@0.0.3
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/jniu/.npm/1f1177db-tar.lock
+16 silly lockFile 06f3dfb4--grate-limiter-0-0-3-package-tgz tar:///Users/jniu/.npm/grate-limiter/0.0.3/package.tgz
+17 verbose lock tar:///Users/jniu/.npm/grate-limiter/0.0.3/package.tgz /Users/jniu/.npm/06f3dfb4--grate-limiter-0-0-3-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 06f3dfb4--grate-limiter-0-0-3-package-tgz tar:///Users/jniu/.npm/grate-limiter/0.0.3/package.tgz
+21 silly lockFile 06f3dfb4--grate-limiter-0-0-3-package-tgz tar:///Users/jniu/.npm/grate-limiter/0.0.3/package.tgz
+22 silly lockFile b2c7b77d--npm-grate-limiter-0-0-3-package /Users/jniu/.npm/grate-limiter/0.0.3/package
+23 verbose lock /Users/jniu/.npm/grate-limiter/0.0.3/package /Users/jniu/.npm/b2c7b77d--npm-grate-limiter-0-0-3-package.lock
+24 silly lockFile b2c7b77d--npm-grate-limiter-0-0-3-package /Users/jniu/.npm/grate-limiter/0.0.3/package
+25 silly lockFile b2c7b77d--npm-grate-limiter-0-0-3-package /Users/jniu/.npm/grate-limiter/0.0.3/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'grate-limiter',
+28 silly publish   description: 'A module for rate limiting HTTP(s) requests based on the client IP address or client_id parameter.',
+28 silly publish   version: '0.0.3',
+28 silly publish   author: { name: 'Rex Niu' },
+28 silly publish   keywords: [ 'rate', 'limiter', 'rate limiting', 'flood prevention' ],
+28 silly publish   homepage: 'https://github.com/guiltrex/grate-limiter',
+28 silly publish   license: 'Apache 2.0',
+28 silly publish   repository:
+28 silly publish    { type: 'git',
+28 silly publish      url: 'git://github.com/guiltrex/grate-limiter.git' },
+28 silly publish   directories: { lib: './lib', example: './example' },
+28 silly publish   scripts:
+28 silly publish    { lint: 'jshint ./{lib,example,tests}/*.js --config .jshintrc',
+28 silly publish      test: 'whiskey --tests ./tests/test-rate-limiter.js' },
+28 silly publish   dependencies: { sprintf: '>= 0.1.1' },
+28 silly publish   devDependencies: { whiskey: '0.8.x', jshint: '2.1.x', express: '>= 2.3.4' },
+28 silly publish   engines: { node: '>= 0.4.0' },
+28 silly publish   main: './index',
+28 silly publish   readme: '# Grate-limiter\n\nRate limiter enables IP address or client_id parameter based rate limiting for HTTP(s) requests.\n\nHTTP methods supported:  \n`GET`  \n`HEAD`  \n`POST`  \n`PUT`  \n`DELETE`  \n`ALL` - includes all the supported methods mentioned above\n\nRate limiter allows you to:  \n\n* __Add a new limit for a given path and HTTP method:__       \n `var limiter = new RateLimiter();`  \n `limiter.addLimit(\'/test-path/\', \'GET\', 2, 500);`  \n  where,    \n \t\'/test-path/\' is the path  \n        \'GET\' is the HTTP method the limit applies to  \n\t2 is the request count allowed per given period  \n\t500 is the time period for the request in seconds  \n\n* __Remove Limit:__    \n `limiter.removeLimit(\'/test-path/\', \'GET\');`  \n  where,     \n\t\'/test-path/\' is the path set on a limit  \n        \'GET\' is the HTTP method associated with the path  \n\n* __Reset IP address access counter for the given IP address:__    \n `limiter.resetIpAddressAccessCounter(\'/test-path\', \'GET\', \'127.0.0.1\');`  \n  where,     \n  \t\'/test-path/\' is the path set on a limit  \n        \'GET\' is the HTTP method associated with the path  \n\t\'127.0.0.1\' is the IP address for which the counter will be reset  \n\n* __Process a request and execute callback if the limit is not reached, else drop the request:__    \n `var sampleReq = {\'url\': \'/test-path/\', \'method\': \'GET\', \'socket\': {\'remoteAddress\': \'127.0.0.1\'}};`  \n `var sampleRes = {\'writeHead\': writeHead, \'end\': end};`  \n `limiter.processRequest(sampleReq, sampleRes, callback);`  \n  where,  \n\t sampleReq is the request object\t\t\n\tsampleRes is the response object   \n\tcallback is called with request and response if the limit is not reached  \n\n## Build Status:\n[![Build Status](https://travis-ci.org/cloudkick/rate-limiter.svg)](https://travis-ci.org/cloudkick/rate-limiter)\n\n## Tests\n`npm test`\n\n## Lint\n`npm run-script lint`\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: 'ef32568ab4f5c3b1c5b0e830617286144a45722b',
+28 silly publish   bugs: { url: 'https://github.com/guiltrex/grate-limiter/issues' },
+28 silly publish   _id: 'grate-limiter@0.0.3',
+28 silly publish   _shasum: '2c45eef36e3b144b87528ea7a3876cc004bb5488',
+28 silly publish   _from: '.' }
+29 verbose request where is /grate-limiter
+30 verbose request registry http://npm-registry.snc1/
+31 verbose request id 262123046e5b8b6a
+32 verbose url raw /grate-limiter
+33 verbose url resolving [ 'http://npm-registry.snc1/', './grate-limiter' ]
+34 verbose url resolved http://npm-registry.snc1/grate-limiter
+35 verbose request where is http://npm-registry.snc1/grate-limiter
+36 info trying registry request attempt 1 at 00:44:17
+37 http PUT http://npm-registry.snc1/grate-limiter
+38 http 403 http://npm-registry.snc1/grate-limiter
+39 verbose headers { server: 'nginx/1.5.12',
+39 verbose headers   date: 'Thu, 09 Oct 2014 07:44:17 GMT',
+39 verbose headers   'content-type': 'application/json',
+39 verbose headers   'transfer-encoding': 'chunked',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'cache-control': 'must-revalidate',
+39 verbose headers   'content-encoding': 'gzip' }
+40 error publish Failed PUT 403
+41 error Error: forbidden cannot modify pre-existing version: 0.0.3
+41 error old={"name":"grate-limiter","description":"A module for rate limiting HTTP(s) requests based on the client IP address or client_id parameter.","version":"0.0.3","author":{"name":"Rex Niu"},"keywords":["rate","limiter","rate limiting","flood prevention"],"homepage":"https://github.com/guiltrex/grate-limiter","license":"Apache 2.0","repository":{"type":"git","url":"git://github.com/guiltrex/grate-limiter.git"},"directories":{"lib":"./lib","example":"./example"},"scripts":{"lint":"jshint ./{lib,example,tests}/*.js --config .jshintrc","test":"whiskey --tests ./tests/test-rate-limiter.js"},"dependencies":{"sprintf":">= 0.1.1"},"devDependencies":{"whiskey":"0.8.x","jshint":"2.1.x","express":">= 2.3.4"},"engines":{"node":">= 0.4.0"},"main":"./index","gitHead":"ef32568ab4f5c3b1c5b0e830617286144a45722b","bugs":{"url":"https://github.com/guiltrex/grate-limiter/issues"},"_id":"grate-limiter@0.0.3","_shasum":"0b29c6eefc7d0259d7bdff964fd3cb12808708bd","_from":".","_npmVersion":"1.4.28","_npmUser":{"name":"jniu","email":"jniu@groupon.com"},"maintainers":[{"name":"jniu","email":"jniu@groupon.com"}],"dist":{"shasum":"0b29c6eefc7d0259d7bdff964fd3cb12808708bd","tarball":"http://npm-registry.snc1/grate-limiter/-/grate-limiter-0.0.3.tgz"}}
+41 error new={"name":"grate-limiter","description":"A module for rate limiting HTTP(s) requests based on the client IP address or client_id parameter.","version":"0.0.3","author":{"name":"Rex Niu"},"keywords":["rate","limiter","rate limiting","flood prevention"],"homepage":"https://github.com/guiltrex/grate-limiter","license":"Apache 2.0","repository":{"type":"git","url":"git://github.com/guiltrex/grate-limiter.git"},"directories":{"lib":"./lib","example":"./example"},"scripts":{"lint":"jshint ./{lib,example,tests}/*.js --config .jshintrc","test":"whiskey --tests ./tests/test-rate-limiter.js"},"dependencies":{"sprintf":">= 0.1.1"},"devDependencies":{"whiskey":"0.8.x","jshint":"2.1.x","express":">= 2.3.4"},"engines":{"node":">= 0.4.0"},"main":"./index","readme":"# Grate-limiter\u000a\u000aRate limiter enables IP address or client_id parameter based rate limiting for HTTP(s) requests.\u000a\u000aHTTP methods supported:  \u000a`GET`  \u000a`HEAD`  \u000a`POST`  \u000a`PUT`  \u000a`DELETE`  \u000a`ALL` - includes all the supported methods mentioned above\u000a\u000aRate limiter allows you to:  \u000a\u000a* __Add a new limit for a given path and HTTP method:__       \u000a `var limiter = new RateLimiter();`  \u000a `limiter.addLimit('/test-path/', 'GET', 2, 500);`  \u000a  where,    \u000a \u0009'/test-path/' is the path  \u000a        'GET' is the HTTP method the limit applies to  \u000a\u00092 is the request count allowed per given period  \u000a\u0009500 is the time period for the request in seconds  \u000a\u000a* __Remove Limit:__    \u000a `limiter.removeLimit('/test-path/', 'GET');`  \u000a  where,     \u000a\u0009'/test-path/' is the path set on a limit  \u000a        'GET' is the HTTP method associated with the path  \u000a\u000a* __Reset IP address access counter for the given IP address:__    \u000a `limiter.resetIpAddressAccessCounter('/test-path', 'GET', '127.0.0.1');`  \u000a  where,     \u000a  \u0009'/test-path/' is the path set on a limit  \u000a        'GET' is the HTTP method associated with the path  \u000a\u0009'127.0.0.1' is the IP address for which the counter will be reset  \u000a\u000a* __Process a request and execute callback if the limit is not reached, else drop the request:__    \u000a `var sampleReq = {'url': '/test-path/', 'method': 'GET', 'socket': {'remoteAddress': '127.0.0.1'}};`  \u000a `var sampleRes = {'writeHead': writeHead, 'end': end};`  \u000a `limiter.processRequest(sampleReq, sampleRes, callback);`  \u000a  where,  \u000a\u0009 sampleReq is the request object\u0009\u0009\u000a\u0009sampleRes is the response object   \u000a\u0009callback is called with request and response if the limit is not reached  \u000a\u000a## Build Status:\u000a[![Build Status](https://travis-ci.org/cloudkick/rate-limiter.svg)](https://travis-ci.org/cloudkick/rate-limiter)\u000a\u000a## Tests\u000a`npm test`\u000a\u000a## Lint\u000a`npm run-script lint`\u000a","readmeFilename":"README.md","gitHead":"ef32568ab4f5c3b1c5b0e830617286144a45722b","bugs":{"url":"https://github.com/guiltrex/grate-limiter/issues"},"_id":"grate-limiter@0.0.3","_shasum":"2c45eef36e3b144b87528ea7a3876cc004bb5488","_from":".","_npmVersion":"1.4.28","_npmUser":{"name":"jniu","email":"jniu@groupon.com"},"maintainers":[{"name":"jniu","email":"jniu@groupon.com"}],"dist":{"shasum":"2c45eef36e3b144b87528ea7a3876cc004bb5488","tarball":"http://npm-registry.snc1/grate-limiter/-/grate-limiter-0.0.3.tgz"}}: grate-limiter
+41 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+41 error     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:251:7
+41 error     at Gunzip.onEnd (zlib.js:166:5)
+41 error     at Gunzip.emit (events.js:117:20)
+41 error     at _stream_readable.js:943:16
+41 error     at process._tickCallback (node.js:419:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Darwin 12.4.0
+44 error command "node" "/usr/local/bin/npm" "publish"
+45 error cwd /Users/jniu/Projects/grate-limiter
+46 error node -v v0.10.32
+47 error npm -v 1.4.28
+48 verbose exit [ 1, true ]
