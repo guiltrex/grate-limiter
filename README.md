@@ -1,6 +1,6 @@
-# Rate-limiter
+# Grate-limiter
 
-Rate limiter enables IP address based rate limiting for HTTP(s) requests.
+Rate limiter enables IP address or client_id parameter based rate limiting for HTTP(s) requests.
 
 HTTP methods supported:  
 `GET`  

@@ -1,17 +1,17 @@
 {
-  "name": "rate-limiter",
-  "description": "A module for rate limiting HTTP(s) requests based on the client IP address.",
-  "version": "0.2.0",
-  "author": "Cloudkick, Inc. <tomaz+npm@cloudkick.com> http://www.cloudkick.com",
+  "name": "grate-limiter",
+  "description": "A module for rate limiting HTTP(s) requests based on the client IP address or client_id parameter.",
+  "version": "0.0.1",
+  "author": "Rex Niu",
   "keywords": [ "rate", "limiter", "rate limiting", "flood prevention"],
-  "homepage": "https://github.com/cloudkick/rate-limiter",
+  "homepage": "https://github.com/guiltrex/grate-limiter",
   "license": "Apache 2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/cloudkick/rate-limiter.git"
+    "url": "git://github.com/guiltrex/grate-limiter.git"
   },
   "modules": {
-    "rate-limiter": "./lib/rate-limiter"
+    "grate-limiter": "./lib/grate-limiter"
   },
   "directories": {
     "lib": "./lib",
