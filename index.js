@@ -15,6 +15,6 @@
  */
 
 exports.RateLimiter = require('./lib/rate-limiter').RateLimiter;
-exports.expClientIdMw = require('./lib/rate-limiter').expClientIdMw;
+// exports.expClientIdMw = require('./lib/rate-limiter').expClientIdMw;
 exports.expressMiddleware = require('./lib/rate-limiter').expressMiddleware;
 

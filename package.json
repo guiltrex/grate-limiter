@@ -1,7 +1,7 @@
 {
   "name": "grate-limiter",
   "description": "A module for rate limiting HTTP(s) requests based on the client IP address or client_id parameter.",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "author": "Rex Niu",
   "keywords": [ "rate", "limiter", "rate limiting", "flood prevention"],
   "homepage": "https://github.com/guiltrex/grate-limiter",
